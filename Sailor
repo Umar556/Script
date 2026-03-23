@@ -1,0 +1,544 @@
+if getgenv().taolao_Running then
+    warn("Script already running!")
+    return
+end
+
+repeat task.wait() until game:IsLoaded()
+repeat task.wait() until game.GameId ~= 0
+
+function missing(t, f, fallback)
+	if type(f) == t then return f end
+	return fallback
+end
+
+cloneref = missing("function", cloneref, function(...) return ... end)
+getgc = missing("function", getgc or get_gc_objects)
+getconnections = missing("function", getconnections or get_signal_cons)
+
+Services = setmetatable({}, {
+	__index = function(self, name)
+		local success, cache = pcall(function()
+			return cloneref(game:GetService(name))
+		end)
+		if success then
+			rawset(self, name, cache)
+			return cache
+		else
+			error("Invalid Service: " .. tostring(name))
+		end
+	end
+})
+
+local Players = Services.Players
+local Plr = Players.LocalPlayer
+local Char = Plr.Character or Plr.CharacterAdded:Wait()
+local PGui = Plr:WaitForChild("PlayerGui")
+local Lighting = game:GetService("Lighting")
+
+local RS = Services.ReplicatedStorage
+local RunService = Services.RunService
+local HttpService = Services.HttpService
+local GuiService = Services.GuiService
+local TeleportService = Services.TeleportService
+
+local Marketplace = Services.MarketplaceService
+
+local UIS = Services.UserInputService
+local VirtualUser = Services.VirtualUser
+
+local v, Asset = pcall(function()
+    return Marketplace:GetProductInfo(game.PlaceId)
+end)
+
+local assetName = "Sailor Piece"
+
+if v and Asset then
+    assetName = Asset.Name
+end
+
+local Support = {
+    Webhook = (typeof(request) == "function" or typeof(http_request) == "function"),
+    Clipboard = (typeof(setclipboard) == "function"),
+    FileIO = (typeof(writefile) == "function" and typeof(isfile) == "function"),
+    QueueOnTeleport = (typeof(queue_on_teleport) == "function"),
+    Connections = (typeof(getconnections) == "function"),
+    FPS = (typeof(setfpscap) == "function"),
+    Proximity = (typeof(fireproximityprompt) == "function"),
+}
+
+local executorName = (identifyexecutor and identifyexecutor() or "Unknown"):lower()
+local isXeno = string.find(executorName, "xeno") ~= nil
+
+local LimitedExecutors = {"xeno"}
+local isLimitedExecutor = false
+
+for _, name in ipairs(LimitedExecutors) do
+    if string.find(executorName, name) then
+        isLimitedExecutor = true
+        break
+    end
+end
+
+local repo = "https://raw.githubusercontent.com/gix314/arigato/refs/heads/main/Utilities/"
+local Library = loadstring(game:HttpGet(repo .. "Library.lua"))()
+local ThemeManager = loadstring(game:HttpGet(repo .. "ThemeManager.lua"))()
+local SaveManager = loadstring(game:HttpGet(repo .. "SaveManager.lua"))()
+
+getgenv().taolao_Running = true
+
+local Options = Library.Options
+local Toggles = Library.Toggles
+
+Library.ForceCheckbox = true
+Library.ShowToggleFrameInKeybinds = true
+
+local omg = {
+    13820188365,
+    13413231458,
+    5638697306,
+    16660143487,
+    12669880433,
+    121554255694758,
+    14287111618,
+    16119081646,
+    15868464144,
+    13699729039,
+    10502160439,
+    76020690430974,
+    92696084646822,
+}
+
+local fire = {
+    "https://i.pinimg.com/736x/9b/d2/5f/9bd25f7e1d6e95c6253ef5e5f075f643.jpg",
+    "https://i.pinimg.com/736x/f8/4d/c7/f84dc705b8f23ecdb8c650ec931b43c3.jpg",
+    "https://i.pinimg.com/736x/10/3e/c8/103ec8d6ae5b9b7b38cd2614777aae90.jpg",
+    "https://i.pinimg.com/736x/94/30/21/94302144f136aca660829c6824ada44f.jpg",
+    "https://i.pinimg.com/736x/44/20/95/4420957839b426f39a0f712d7fee41f5.jpg",
+    "https://i.pinimg.com/736x/d4/3e/c1/d43ec166f5fa3bffb0eba74f80a485d3.jpg",
+    "https://i.pinimg.com/736x/79/9d/0e/799d0e707b953c372553449d96bbb1f8.jpg",
+    "https://i.pinimg.com/736x/ba/e2/b3/bae2b38b9353be080d8df7460e9a9a49.jpg",
+    "https://i.pinimg.com/736x/4c/60/4a/4c604abf385acef014f56dc3244bd58c.jpg",
+    "https://i.pinimg.com/736x/0d/4a/2d/0d4a2d3b6add65506932c2429935c074.jpg",
+    "https://i.pinimg.com/736x/91/fb/f8/91fbf8588cf51349670177e0f289432d.jpg",
+    "https://i.pinimg.com/736x/44/81/d5/4481d5741397085afbee3fe42096ce83.jpg",
+    "https://i.pinimg.com/1200x/0a/f8/61/0af861dbeafdcfce6fde30ce2d24e355.jpg",
+    "https://i.pinimg.com/736x/d5/67/49/d56749b3fdf8ab8253ad32965518d309.jpg",
+    "https://i.pinimg.com/1200x/40/cb/c2/40cbc211cc86a1e131f25dd0fa339e65.jpg",
+    "https://i.pinimg.com/736x/51/27/c5/5127c5c03c81b72fbd666ca0ee9c20f3.jpg"
+}
+
+local randomIndex = math.random(1, #omg)
+local theChosenOne = omg[randomIndex]
+
+local eh_success, err = pcall(function()
+
+local hasJoinedDiscord = "fuck taolao_DiscordJoined.txt"
+
+if not isfile(hasJoinedDiscord) then
+    local discordInvite = "https://discord.gg/mcMEkVdebJ"
+    local inviteCode = "mcMEkVdebJ"
+    
+    Library:Notify("Join our Discord for updates!", 5)
+    
+    pcall(function()
+        if setclipboard then
+            setclipboard(discordInvite)
+        end
+    end)
+
+    if request then
+        task.spawn(function()
+            pcall(function()
+                request({
+                    Url = "http://127.0.0.1:6463/rpc?v=1",
+                    Method = "POST",
+                    Headers = { 
+                        ["Content-Type"] = "application/json", 
+                        ["Origin"] = "https://discord.com" 
+                    },
+                    Body = HttpService:JSONEncode({
+                        cmd = "INVITE_BROWSER",
+                        args = { code = inviteCode },
+                        nonce = HttpService:GenerateGUID(false)
+                    })
+                })
+            end)
+        end)
+    end
+
+    pcall(function()
+        writefile(hasJoinedDiscord, "Joined")
+    end)
+elseif not Support.FileIO then
+    Library:Notify("Recommended to use better executor.", 3)
+end
+
+local PriorityTasks = {"Boss", "Pity Boss", "Summon [Other]", "Summon", "Level Farm", "All Mob Farm", "Mob", "Merchant", "Alt Help"}
+local DefaultPriority = {"Boss", "Pity Boss", "Summon [Other]", "Summon", "Level Farm", "All Mob Farm", "Mob", "Merchant", "Alt Help"}
+
+local TargetGroupId = 1002185259
+local BannedRanks = {255, 254, 175, 150}
+
+local NewItemsBuffer = {}
+
+local Shared = {
+    GlobalPrio = "FARM",
+
+    Cached = {
+        Inv = {},
+        Accessories = {},
+        RawWeapCache = { Sword = {}, Melee = {} },
+    },
+
+    Farm = true,
+    Recovering = false,
+    MovingIsland = false,
+    Island = "",
+    Target = nil,
+    KillTick = 0,
+    TargetValid = false,
+
+    QuestNPC = "",
+    
+    MobIdx = 1,
+    AllMobIdx = 1,
+    WeapRotationIdx = 1,
+    ComboIdx = 1,
+    ParsedCombo = {},
+    RawWeapCache = { Sword = {}, Melee = {} },
+    ActiveWeap = "",
+
+    ArmHaki = false,
+
+    BossTIMap = {},
+    
+    InventorySynced = false,
+    Stats = {},
+    Settings = {},
+    GemStats = {},
+    SkillTree = { Nodes = {}, Points = 0 },
+    Passives = {},
+    SpecStatsSlider = {},
+    ArtifactSession = {
+        Inventory = {},
+        Dust = 0,
+        InvCount = 0
+    },
+    UpBlacklist = {},
+
+    MerchantBusy = false,
+    LocalMerchantTime = 0,
+    LastTimerTick = tick(),
+    MerchantExecute = false,
+    FirstMerchantSync = false,
+    CurrentStock = {},
+    
+    LastM1 = 0,
+    LastWRSwitch = 0,
+    LastSwitch = { Title = "", Rune = "" },
+    LastBuildSwitch = 0,
+    LastDungeon = 0,
+    
+    AltDamage = {},
+    AltActive = false,
+    TradeState = {},
+}
+
+local Script_Start_Time = os.time()
+
+local StartStats = {
+    Level = Plr.Data.Level.Value,
+    Money = Plr.Data.Money.Value,
+    Gems = Plr.Data.Gems.Value,
+    Bounty = (Plr:FindFirstChild("leaderstats") and Plr.leaderstats:FindFirstChild("Bounty") and Plr.leaderstats.Bounty.Value) or 0
+}
+
+local function GetSessionTime()
+    local seconds = os.time() - Script_Start_Time
+    local hours = math.floor(seconds / 3600)
+    local mins = math.floor((seconds % 3600) / 60)
+    
+    return string.format("%dh %02dm", hours, mins)
+end
+
+local function GetSafeModule(parent, name)
+    local obj = parent:FindFirstChild(name)
+    if obj and obj:IsA("ModuleScript") then
+        local success, result = pcall(require, obj)
+        if success then return result end
+    end
+    return nil
+end
+
+local function GetRemote(parent, pathString)
+    local current = parent
+    for _, name in ipairs(pathString:split(".")) do
+        if not current then return nil end
+        current = current:FindFirstChild(name)
+    end
+    return current
+end
+
+local function SafeInvoke(remote, ...)
+    local args = {...}
+    local result = nil
+    task.spawn(function()
+        local success, res = pcall(function()
+            return remote:InvokeServer(unpack(args))
+        end)
+        result = res
+    end)
+    
+    local start = tick()
+    repeat task.wait() until result ~= nil or (tick() - start) > 2 
+    return result
+end
+
+local function fire_event(signal, ...)
+    if firesignal then
+        return firesignal(signal, ...)
+    elseif getconnections then
+        for _, connection in ipairs(getconnections(signal)) do
+            if connection.Function then
+                task.spawn(connection.Function, ...)
+            end
+        end
+    else
+        warn("Your executor does not support firesignal or getconnections.")
+    end
+end
+
+local _DR = GetRemote(RS, "RemoteEvents.DashRemote")
+local _FS = (_DR and _DR.FireServer)
+
+local Remotes = {
+    SettingsToggle = GetRemote(RS, "RemoteEvents.SettingsToggle"),
+    SettingsSync = GetRemote(RS, "RemoteEvents.SettingsSync"),
+    UseCode = GetRemote(RS, "RemoteEvents.CodeRedeem"),
+
+    M1 = GetRemote(RS, "CombatSystem.Remotes.RequestHit"),
+    EquipWeapon = GetRemote(RS, "Remotes.EquipWeapon"),
+    UseSkill = GetRemote(RS, "AbilitySystem.Remotes.RequestAbility"),
+    UseFruit = GetRemote(RS, "RemoteEvents.FruitPowerRemote"),
+    QuestAccept = GetRemote(RS, "RemoteEvents.QuestAccept"),
+    QuestAbandon = GetRemote(RS, "RemoteEvents.QuestAbandon"),
+
+    UseItem = GetRemote(RS, "Remotes.UseItem"),
+    SlimeCraft = GetRemote(RS, "Remotes.RequestSlimeCraft"),
+    GrailCraft = GetRemote(RS, "Remotes.RequestGrailCraft"),
+
+    RerollSingleStat = GetRemote(RS, "Remotes.RerollSingleStat"),
+
+    SkillTreeUpgrade = GetRemote(RS, "RemoteEvents.SkillTreeUpgrade"),
+    Enchant = GetRemote(RS, "Remotes.EnchantAccessory"),
+    Blessing = GetRemote(RS, "Remotes.BlessWeapon"),
+
+    ArtifactSync = GetRemote(RS, "RemoteEvents.ArtifactDataSync"),
+    ArtifactClaim = GetRemote(RS, "RemoteEvents.ArtifactMilestoneClaimReward"),
+    MassDelete = GetRemote(RS, "RemoteEvents.ArtifactMassDeleteByUUIDs"),
+    MassUpgrade = GetRemote(RS, "RemoteEvents.ArtifactMassUpgrade"),
+    ArtifactLock = GetRemote(RS, "RemoteEvents.ArtifactLock"),
+    ArtifactUnequip = GetRemote(RS, "RemoteEvents.ArtifactUnequip"),
+    ArtifactEquip = GetRemote(RS, "RemoteEvents.ArtifactEquip"),
+
+    Roll_Trait = GetRemote(RS, "RemoteEvents.TraitReroll"),
+    TraitAutoSkip = GetRemote(RS, "RemoteEvents.TraitUpdateAutoSkip"),
+    TraitConfirm = GetRemote(RS, "RemoteEvents.TraitConfirm"),
+    SpecPassiveReroll = GetRemote(RS, "RemoteEvents.SpecPassiveReroll"),
+
+    ArmHaki = GetRemote(RS, "RemoteEvents.HakiRemote"),
+    ObserHaki = GetRemote(RS, "RemoteEvents.ObservationHakiRemote"),
+    ConquerorHaki = GetRemote(RS, "Remotes.ConquerorHakiRemote"),
+
+    TP_Portal = GetRemote(RS, "Remotes.TeleportToPortal"),
+    OpenDungeon = GetRemote(RS, "Remotes.RequestDungeonPortal"),
+
+    EquipTitle = GetRemote(RS, "RemoteEvents.TitleEquip"),
+    TitleUnequip = GetRemote(RS, "RemoteEvents.TitleUnequip"),
+    EquipRune = GetRemote(RS, "Remotes.EquipRune"),
+    LoadoutLoad = GetRemote(RS, "RemoteEvents.LoadoutLoad"),
+    AddStat = GetRemote(RS, "RemoteEvents.AllocateStat"),
+
+    OpenMerchant = GetRemote(RS, "Remotes.MerchantRemotes.OpenMerchantUI"),
+    MerchantBuy = GetRemote(RS, "Remotes.MerchantRemotes.PurchaseMerchantItem"),
+    ValentineBuy = GetRemote(RS, "Remotes.ValentineMerchantRemotes.PurchaseValentineMerchantItem"),
+    StockUpdate = GetRemote(RS, "Remotes.MerchantRemotes.MerchantStockUpdate"),
+
+    SummonBoss = GetRemote(RS, "Remotes.RequestSummonBoss"),
+    JJKSummonBoss = GetRemote(RS, "Remotes.RequestSpawnStrongestBoss"),
+    RimuruBoss = GetRemote(RS, "RemoteEvents.RequestSpawnRimuru"),
+    AnosBoss = GetRemote(RS, "Remotes.RequestSpawnAnosBoss"),
+    TrueAizenBoss = GetRemote(RS, "RemoteEvents.RequestSpawnTrueAizen"),
+
+    ReqInventory = GetRemote(RS, "Remotes.RequestInventory"),
+    Ascend = GetRemote(RS, "RemoteEvents.RequestAscend"),
+    ReqAscend = GetRemote(RS, "RemoteEvents.GetAscendData"),
+    CloseAscend = GetRemote(RS, "RemoteEvents.CloseAscendUI"),
+
+    TradeRespond = GetRemote(RS, "Remotes.TradeRemotes.RespondToRequest"),
+    TradeSend = GetRemote(RS, "Remotes.TradeRemotes.SendTradeRequest"),
+    TradeAddItem = GetRemote(RS, "Remotes.TradeRemotes.AddItemToTrade"),
+    TradeReady = GetRemote(RS, "Remotes.TradeRemotes.SetReady"),
+    TradeConfirm = GetRemote(RS, "Remotes.TradeRemotes.ConfirmTrade"),
+    TradeUpdated = GetRemote(RS, "Remotes.TradeRemotes.TradeUpdated"),
+
+    HakiStateUpdate = GetRemote(RS, "RemoteEvents.HakiStateUpdate"),
+    UpCurrency = GetRemote(RS, "RemoteEvents.UpdateCurrency"),
+    UpInventory = GetRemote(RS, "Remotes.UpdateInventory"),
+    UpPlayerStats = GetRemote(RS, "RemoteEvents.UpdatePlayerStats"),
+    UpAscend = GetRemote(RS, "RemoteEvents.AscendDataUpdate"),
+    UpStatReroll = GetRemote(RS, "RemoteEvents.StatRerollUpdate"),
+    SpecPassiveUpdate = GetRemote(RS, "RemoteEvents.SpecPassiveDataUpdate"),
+    SpecPassiveSkip = GetRemote(RS, "RemoteEvents.SpecPassiveUpdateAutoSkip"),
+    UpSkillTree = GetRemote(RS, "RemoteEvents.SkillTreeUpdate"),
+    BossUIUpdate = GetRemote(RS, "Remotes.BossUIUpdate"),
+    TitleSync = GetRemote(RS, "RemoteEvents.TitleDataSync"),
+}
+
+local Modules = {
+    BossConfig = GetSafeModule(RS.Modules, "BossConfig") or {Bosses = {}},
+    TimedConfig = GetSafeModule(RS.Modules, "TimedBossConfig"),
+    SummonConfig = GetSafeModule(RS.Modules, "SummonableBossConfig"),
+
+    Merchant = GetSafeModule(RS.Modules, "MerchantConfig") or {ITEMS = {}},
+    ValentineConfig = GetSafeModule(RS.Modules, "ValentineMerchantConfig"),
+
+    Title = GetSafeModule(RS.Modules, "TitlesConfig") or {},
+    Quests = GetSafeModule(RS.Modules, "QuestConfig") or {RepeatableQuests = {}, Questlines = {}},
+
+    WeaponClass = GetSafeModule(RS.Modules, "WeaponClassification") or {Tools = {}},
+    Fruits = GetSafeModule(RS:FindFirstChild("FruitPowerSystem") or game, "FruitPowerConfig") or {Powers = {}},
+    ArtifactConfig = GetSafeModule(RS.Modules, "ArtifactConfig"),
+
+    Stats = GetSafeModule(RS.Modules, "StatRerollConfig"),
+    Codes = GetSafeModule(RS, "CodesConfig") or {Codes = {}},
+    ItemRarity = GetSafeModule(RS.Modules, "ItemRarityConfig"),
+    Trait = GetSafeModule(RS.Modules, "TraitConfig") or {Traits = {}},
+    Race = GetSafeModule(RS.Modules, "RaceConfig") or {Races = {}},
+    Clan = GetSafeModule(RS.Modules, "ClanConfig") or {Clans = {}},
+    SpecPassive = GetSafeModule(RS.Modules, "SpecPassiveConfig"),
+}
+
+local MerchantItemList = Modules.Merchant.ITEMS
+local SortedTitleList = Modules.Title:GetSortedTitleIds()
+
+local PATH = {
+    Mobs = workspace:WaitForChild('NPCs'),
+    InteractNPCs = workspace:WaitForChild('ServiceNPCs'),
+}
+
+local function GetServiceNPC(name)
+    return PATH.InteractNPCs:FindFirstChild(name)
+end
+
+local NPCs = {
+    Merchant = {
+        Regular = GetServiceNPC("MerchantNPC"),
+        Dungeon = GetServiceNPC("DungeonMerchantNPC"),
+        Valentine = GetServiceNPC("ValentineMerchantNPC"),
+    }
+}
+
+local UI = {
+    Merchant = {
+        Regular = PGui:WaitForChild("MerchantUI"),
+        Dungeon = PGui:WaitForChild("DungeonMerchantUI"),
+        Valentine = PGui:FindFirstChild("ValentineMerchantUI"),
+    }
+}
+
+local pingUI = PGui:WaitForChild("QuestPingUI")
+
+local SummonMap = {}
+
+local function GetRemoteBossArg(name)
+    local RemoteBossMap = {
+        ["strongestinhistory"] = "StrongestHistory",
+        ["strongestoftoday"] = "StrongestToday",
+        ["strongesthistory"] = "StrongestHistory",
+        ["strongesttoday"] = "StrongestToday",
+    }
+    return RemoteBossMap[name:lower()] or name
+end
+
+local IslandCrystals = {
+    ["Starter"] = workspace:FindFirstChild("StarterIsland") and workspace.StarterIsland:FindFirstChild("SpawnPointCrystal_Starter"),
+    ["Jungle"] = workspace:FindFirstChild("JungleIsland") and workspace.JungleIsland:FindFirstChild("SpawnPointCrystal_Jungle"),
+    ["Desert"] = workspace:FindFirstChild("DesertIsland") and workspace.DesertIsland:FindFirstChild("SpawnPointCrystal_Desert"),
+    ["Snow"] = workspace:FindFirstChild("SnowIsland") and workspace.SnowIsland:FindFirstChild("SpawnPointCrystal_Snow"),
+    ["Sailor"] = workspace:FindFirstChild("SailorIsland") and workspace.SailorIsland:FindFirstChild("SpawnPointCrystal_Sailor"),
+    ["Shibuya"] = workspace:FindFirstChild("ShibuyaStation") and workspace.ShibuyaStation:FindFirstChild("SpawnPointCrystal_Shibuya"),
+    ["HuecoMundo"] = workspace:FindFirstChild("HuecoMundo") and workspace.HuecoMundo:FindFirstChild("SpawnPointCrystal_HuecoMundo"),
+    ["Boss"] = workspace:FindFirstChild("BossIsland") and workspace.BossIsland:FindFirstChild("SpawnPointCrystal_Boss"),
+    ["Dungeon"] = workspace:FindFirstChild("Main Temple") and workspace["Main Temple"]:FindFirstChild("SpawnPointCrystal_Dungeon"),
+    ["Shinjuku"] = workspace:FindFirstChild("ShinjukuIsland") and workspace.ShinjukuIsland:FindFirstChild("SpawnPointCrystal_Shinjuku"),
+    ["Valentine"] = workspace:FindFirstChild("ValentineIsland") and workspace.ValentineIsland:FindFirstChild("SpawnPointCrystal_Valentine"),
+    ["Slime"] = workspace:FindFirstChild("SlimeIsland") and workspace.SlimeIsland:FindFirstChild("SpawnPointCrystal_Slime"),
+    ["Academy"] = workspace:FindFirstChild("AcademyIsland") and workspace.AcademyIsland:FindFirstChild("SpawnPointCrystal_Academy"),
+    ["Judgement"] = workspace:FindFirstChild("JudgementIsland") and workspace.JudgementIsland:FindFirstChild("SpawnPointCrystal_Judgement"),
+    ["SoulSociety"] = workspace:FindFirstChild("SoulSocietyIsland") and workspace.SoulSocietyIsland:FindFirstChild("SpawnPointCrystal_SoulSociety"),
+}
+
+local Connections = {
+    Player_General = nil,
+    Idled = nil,
+    Merchant = nil,
+    Dash = nil,
+    Knockback = {},
+    Reconnect = nil,
+}
+
+local Tables = {
+    AscendLabels = {},
+    DiffList = {"Normal", "Medium", "Hard", "Extreme"},
+    MobList = {},
+    MiniBossList = {"ThiefBoss", "MonkeyBoss", "DesertBoss", "SnowBoss", "PandaMiniBoss"},
+    BossList = {},
+    AllBossList = {},
+    AllNPCList = {},
+    AllEntitiesList = {},
+    SummonList = {},
+    OtherSummonList = {"StrongestHistory", "StrongestToday", "Rimuru", "Anos", "TrueAizen"},
+    Weapon = {"Melee", "Sword", "Power"},
+    ManualWeaponClass = {
+        ["Invisible"] = "Power",
+        ["Bomb"] = "Power",
+        ["Quake"] = "Power",
+    },
+
+    MerchantList = {},
+    ValentineMerchantList = {},
+
+    Rarities = {"Common", "Rare", "Epic", "Legendary", "Mythical", "Secret", "Aura Crate", "Cosmetic Crate"},
+    CraftItemList = {"SlimeKey", "DivineGrail"},
+    UnlockedTitle = {},
+    TitleCategory = {"None", "Best EXP", "Best Money & Gem", "Best Luck", "Best DMG"},
+    TitleList = {},
+    BuildList = {"1", "2", "3", "4", "5", "None"},
+    TraitList = {},
+    RarityWeight = {
+    ["Secret"] = 1,
+    ["Mythical"] = 2,
+    ["Legendary"] = 3,
+    ["Epic"] = 4,
+    ["Rare"] = 5,
+    ["Uncommon"] = 6,
+    ["Common"] = 7
+    },
+    RaceList = {},
+    ClanList = {},
+    RuneList = {"None"},
+    SpecPassive = {},
+    GemStat = Modules.Stats.StatKeys,
+    GemRank = Modules.Stats.RankOrder,
+    OwnedWeapon = {},
+    AllOwnedWeapons = {},
+    OwnedAccessory = {},
+    QuestlineList = {},
+
+    OwnedItem = {},
+
+    IslandList = {"Starter", "Jungle", "Desert", "Snow", "Sailor", "Shibuya", "HuecoMundo", "Boss", "Dungeon", "Shinjuku", "Valentine", "Slime", "Academy", "Judgement", "SoulSociety"},
+    NPC_QuestList = {"DungeonUnlock", "SlimeKeyUnlock"},
+    NPC_MiscList = {"Artifacts", "Blessing", "Enchant", "SkillTree", "Cupid", "ArmHaki", "Observation", "Conqueror"},
+    DungeonList = {"CidDungeon", "RuneDungeon", "DoubleDungeon", "BossRus
