@@ -1,0 +1,1121 @@
+-- ts file was generated at discord.gg/25ms
+
+local genv = getgenv()
+local _call3 = game:GetService('Players')
+local _call5 = game:GetService('ReplicatedStorage')
+local _call7 = game:GetService('Workspace')
+
+game:GetService('VirtualInputManager')
+
+local _call11 = game:GetService('TweenService')
+local _call13 = game:GetService('UserInputService')
+
+game:GetService('RunService')
+game:GetService('HttpService')
+game:GetService('TeleportService')
+
+local _LocalPlayer20 = _call3.LocalPlayer
+local _ = _LocalPlayer20.Character
+local _call23 = _LocalPlayer20:WaitForChild('PlayerGui')
+
+_call23:FindFirstChild('LiquidUltraIsland')
+_call23:FindFirstChild('LiquidUltraIsland'):Destroy()
+
+local _call31 = Instance.new('ScreenGui')
+
+_call31.Name = 'LiquidUltraIsland'
+_call31.IgnoreGuiInset = true
+_call31.ResetOnSpawn = false
+_call31.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+_call31.DisplayOrder = 999999
+_call31.Parent = _call23
+
+local _call35 = Instance.new('Frame')
+
+_call35.Name = 'MasterHolder'
+_call35.Size = UDim2.new(0, 400, 1, 0)
+_call35.AnchorPoint = Vector2.new(0.5, 0)
+_call35.Position = UDim2.new(0.5, 0, 0, 0)
+_call35.BackgroundTransparency = 1
+_call35.Parent = _call31
+
+local _call43 = Instance.new('UIListLayout')
+
+_call43.HorizontalAlignment = Enum.HorizontalAlignment.Center
+_call43.VerticalAlignment = Enum.VerticalAlignment.Top
+_call43.Padding = UDim.new(0, 12)
+_call43.SortOrder = Enum.SortOrder.LayoutOrder
+_call43.Parent = _call35
+
+local _call53 = Instance.new('UIPadding')
+local _ = _call13.TouchEnabled
+
+_call53.PaddingTop = UDim.new(0, 35)
+_call53.Parent = _call35
+
+local _call58 = Instance.new('Frame')
+
+_call58.Name = '00_BasePill'
+_call58.Size = UDim2.new(0, 80, 0, 32)
+_call58.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+_call58.BackgroundTransparency = 0.45
+_call58.BorderSizePixel = 0
+_call58.LayoutOrder = -1
+_call58.Parent = _call35
+
+local _call64 = Instance.new('UICorner')
+
+_call64.CornerRadius = UDim.new(1, 0)
+_call64.Parent = _call58
+
+local _call68 = Instance.new('UIStroke')
+
+_call68.Color = Color3.fromRGB(255, 255, 255)
+_call68.Transparency = 0.5
+_call68.Thickness = 1.8
+_call68.Parent = _call58
+genv.LiquidGlassNotify = function(_71, _71_2, _71_3, _71_4, _71_5)
+    local _ = _71 .. _71_2
+    local _ = _call13.TouchEnabled
+    local _call75 = Instance.new('Frame')
+
+    _call75.Name = 'NotifyCard'
+    _call75.Size = UDim2.new(0, 80, 0, 0)
+    _call75.BackgroundTransparency = 1
+    _call75.ClipsDescendants = false
+    _call75.LayoutOrder = 1259089303.7707307
+    _call75.Parent = _call35
+
+    local _call79 = Instance.new('CanvasGroup')
+
+    _call79.Name = 'MainBody'
+    _call79.Size = UDim2.new(0, 80, 0, 32)
+    _call79.Position = UDim2.new(0.5, -40, 0, -44)
+    _call79.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    _call79.BackgroundTransparency = 0.35
+    _call79.GroupTransparency = 1
+    _call79.BorderSizePixel = 0
+    _call79.Parent = _call75
+
+    local _call87 = Instance.new('UICorner')
+
+    _call87.CornerRadius = UDim.new(1, 0)
+    _call87.Parent = _call79
+
+    local _call91 = Instance.new('UIStroke')
+
+    _call91.Color = Color3.fromRGB(255, 255, 255)
+    _call91.Transparency = 0.4
+    _call91.Thickness = 2.4
+    _call91.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    _call91.Parent = _call79
+
+    local _call97 = Instance.new('Frame')
+
+    _call97.Size = UDim2.new(1, 0, 1, 0)
+    _call97.BackgroundTransparency = 1
+    _call97.Parent = _call79
+
+    local _call101 = Instance.new('ImageLabel')
+
+    _call101.Size = UDim2.new(0, 30, 0, 30)
+    _call101.Position = UDim2.new(0, 18, 0.5, -15)
+    _call101.BackgroundTransparency = 1
+    _call101.Image = _71_3
+    _call101.ImageTransparency = 1
+    _call101.Parent = _call97
+
+    local _call107 = Instance.new('Frame')
+
+    _call107.Size = UDim2.new(1, -90, 1, 0)
+    _call107.Position = UDim2.new(0, 65, 0, 0)
+    _call107.BackgroundTransparency = 1
+    _call107.Parent = _call97
+
+    local _call113 = Instance.new('TextLabel')
+
+    _call113.Size = UDim2.new(1, 0, 0, 22)
+    _call113.Position = UDim2.new(0, 0, 0.5, -20)
+    _call113.BackgroundTransparency = 1
+    _call113.Font = Enum.Font.GothamBold
+    _call113.TextColor3 = Color3.fromRGB(15, 15, 15)
+    _call113.TextSize = 16
+    _call113.Text = _71
+    _call113.TextXAlignment = Enum.TextXAlignment.Left
+    _call113.TextTransparency = 1
+    _call113.Parent = _call107
+
+    local _call125 = Instance.new('TextLabel')
+
+    _call125.Size = UDim2.new(1, 0, 0, 18)
+    _call125.Position = UDim2.new(0, 0, 0.5, 2)
+    _call125.BackgroundTransparency = 1
+    _call125.Font = Enum.Font.GothamMedium
+    _call125.TextColor3 = Color3.fromRGB(60, 60, 65)
+    _call125.TextSize = 13
+    _call125.Text = _71_2
+    _call125.TextXAlignment = Enum.TextXAlignment.Left
+    _call125.TextTransparency = 1
+    _call125.Parent = _call107
+
+    local _call137 = Instance.new('Frame')
+
+    _call137.Size = UDim2.new(0, 0, 0, 3)
+    _call137.Position = UDim2.new(0, 18, 1, -8)
+    _call137.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    _call137.BackgroundTransparency = 0.75
+    _call137.BorderSizePixel = 0
+    _call137.Parent = _call79
+
+    Instance.new('UICorner', _call137)
+
+    local _call151 = TweenInfo.new(0.9, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
+    local _call155 = _call11:Create(_call75, _call151, {
+        Size = UDim2.new(0, 310, 0, 72),
+    })
+
+    _call155:Play()
+
+    local _call163 = _call11:Create(_call79, _call151, {
+        Size = UDim2.new(1, 0, 1, 0),
+        GroupTransparency = 0,
+        Position = UDim2.new(0, 0, 0, 0),
+    })
+
+    _call163:Play()
+
+    local _call169 = _call11:Create(_call87, _call151, {
+        CornerRadius = UDim.new(0, 24),
+    })
+
+    _call169:Play()
+    task.delay(0.2, function(_174, _174_2, _174_3, _174_4, _174_5)
+        local _call176 = TweenInfo.new(0.4)
+        local _call178 = _call11:Create(_call101, _call176, {ImageTransparency = 0})
+
+        _call178:Play()
+
+        local _call182 = _call11:Create(_call113, _call176, {TextTransparency = 0})
+
+        _call182:Play()
+
+        local _call186 = _call11:Create(_call125, _call176, {TextTransparency = 0})
+
+        _call186:Play()
+
+        local _call196 = _call11:Create(_call137, TweenInfo.new(_71_4, Enum.EasingStyle.Linear), {
+            Size = UDim2.new(1, -36, 0, 3),
+        })
+
+        _call196:Play()
+    end)
+    task.delay((_71_4 + 0.8), function()
+        local _call208 = TweenInfo.new(0.8, Enum.EasingStyle.Quart, Enum.EasingDirection.In)
+        local _call212 = _call11:Create(_call101, TweenInfo.new(0.2), {ImageTransparency = 1})
+
+        _call212:Play()
+
+        local _call218 = _call11:Create(_call113, TweenInfo.new(0.2), {TextTransparency = 1})
+
+        _call218:Play()
+
+        local _call224 = _call11:Create(_call125, TweenInfo.new(0.2), {TextTransparency = 1})
+
+        _call224:Play()
+
+        local _call230 = _call11:Create(_call137, TweenInfo.new(0.2), {BackgroundTransparency = 1})
+
+        _call230:Play()
+        task.wait(0.15)
+
+        local _call238 = _call11:Create(_call79, _call208, {
+            Size = UDim2.new(0, 80, 0, 32),
+            GroupTransparency = 1,
+            Position = UDim2.new(0.5, -40, 0, -44),
+        })
+
+        _call238:Play()
+
+        local _call244 = _call11:Create(_call87, _call208, {
+            CornerRadius = UDim.new(1, 0),
+        })
+
+        _call244:Play()
+
+        local _call250 = _call11:Create(_call75, _call208, {
+            Size = UDim2.new(0, 80, 0, 0),
+        })
+
+        _call250:Play()
+        _call250.Completed:Wait()
+        _call75:Destroy()
+    end)
+end
+genv.AutoFarm = false
+genv.AutoDungeon = false
+genv.AutoVoteDifficulty = false
+genv.SelectedDungeon = ''
+genv.DungeonDifficulty = 'Easy'
+genv.AutoReplayDungeon = false
+genv.AutoQuest = false
+genv.AcceptBoss = true
+genv.AutoQuestForMonster = false
+genv.AutoBoss = false
+genv.AutoSummonBoss = false
+genv.SelectedBoss = ''
+genv.BossDifficulty = 'Normal'
+genv.AutoFarmSelectedBoss = false
+genv.AutoHop = false
+genv.AutoHaki = false
+genv.AutoZ = false
+genv.AutoX = false
+genv.AutoC = false
+genv.AutoV = false
+genv.AutoF = false
+genv.AutoStat = false
+genv.StatPoints = 50
+genv.SelectedStat = 'Sword'
+genv.SelectedMonsters = {}
+genv.freezeEnabled = true
+genv.hitboxEnabled = true
+genv.useRandomPos = false
+genv.tpX = 0
+genv.tpY = 9
+genv.tpZ = 0
+genv.tweenSpeed = 100
+genv.PrimaryWeapon = ''
+genv.AutoSave = false
+
+local _ = genv.tweenSpeed
+local _ = genv.freezeEnabled
+local _ = genv.hitboxEnabled
+local _ = genv.PrimaryWeapon
+local _ = genv.useRandomPos
+local _ = genv.tpX
+local _ = genv.tpY
+local _ = genv.tpZ
+
+_call5:FindFirstChild('RemoteEvents')
+_call5.RemoteEvents:FindFirstChild('QuestAccept')
+_call5:FindFirstChild('RemoteEvents')
+
+local _call275 = _call5.RemoteEvents:FindFirstChild('QuestAbandon')
+
+_call5:FindFirstChild('RemoteEvents')
+
+local _RemoteEvents278 = _call5.RemoteEvents
+
+_call5:FindFirstChild('Modules')
+require(_call5.Modules:FindFirstChild('QuestConfig'))
+_call5:FindFirstChild('CombatSystem')
+_call5.CombatSystem:FindFirstChild('Remotes')
+_call5.CombatSystem.Remotes:FindFirstChild('RequestHit')
+_call5:FindFirstChild('AbilitySystem')
+_call5.AbilitySystem:FindFirstChild('Remotes')
+_call5.AbilitySystem.Remotes:FindFirstChild('RequestAbility')
+_call5:FindFirstChild('RemoteEvents')
+_call5.RemoteEvents:FindFirstChild('CodeRedeem')
+_call5:FindFirstChild('Remotes')
+_call5.Remotes:FindFirstChild('TeleportToPortal')
+_call5:FindFirstChild('Remotes')
+_call5.Remotes:FindFirstChild('RequestSummonBoss')
+_call5:FindFirstChild('Remotes')
+_call5.Remotes:FindFirstChild('RequestSpawnStrongestBoss')
+_call5:FindFirstChild('RemoteEvents')
+_call5.RemoteEvents:FindFirstChild('RequestSpawnRimuru')
+_call5:FindFirstChild('Remotes')
+_call5.Remotes:FindFirstChild('RequestSpawnAnosBoss')
+_call5:FindFirstChild('RemoteEvents')
+_call5.RemoteEvents:FindFirstChild('RequestSpawnTrueAizen')
+_call5:FindFirstChild('Remotes')
+_call5.Remotes:FindFirstChild('RequestDungeonPortal')
+_call5:FindFirstChild('Remotes')
+_call5.Remotes:FindFirstChild('DungeonWaveVote')
+_call5:FindFirstChild('Remotes')
+_call5.Remotes:FindFirstChild('DungeonWaveReplayVote')
+_call5:FindFirstChild('RemoteEvents')
+_call5.RemoteEvents:FindFirstChild('HakiRemote')
+_RemoteEvents278:FindFirstChild('QuestUIUpdate').OnClientEvent:Connect(function(_363, _363_2, _363_3, _363_4, _363_5, _363_6, _363_7) end)
+_LocalPlayer20.CharacterAdded:Connect(function(_367, _367_2, _367_3, _367_4, _367_5)
+    genv.StopTween = true
+
+    for _371, _371_2 in pairs(_LocalPlayer20.Character:GetDescendants())do
+        _371_2:IsA('BasePart')
+
+        _371_2.CanCollide = true
+    end
+
+    local _call376 = _LocalPlayer20.Character:FindFirstChild('HumanoidRootPart')
+
+    _call376.CanCollide = true
+
+    task.wait(2)
+end)
+
+local _call386 = loadstring(game:HttpGet('https://raw.githubusercontent.com/Sindex-Saliii/Sindex-Main/refs/heads/main/DummyUI.lua'))():Window({
+    Config = {
+        Size = UDim2.new(0, 530, 0, 400),
+        Keybind = Enum.KeyCode.RightControl,
+    },
+    Title = 'Trigon Hub [ Sailor Piece ]',
+    CloseUIButton = {
+        Enabled = true,
+        Text = 'Close UI',
+    },
+    Theme = 'Dark',
+    Icon = 82500352718600,
+    Desc = 'by x.saliii',
+})
+
+_call386:SelectTab(1)
+
+local _call390 = _call386:Tab({
+    Title = 'Auto Farm',
+    Icon = 'swords',
+})
+local _call392 = _call386:Tab({
+    Title = 'Auto Dungeon',
+    Icon = 'layers',
+})
+local _call394 = _call386:Tab({
+    Title = 'Auto Boss',
+    Icon = 'skull',
+})
+local _call396 = _call386:Tab({
+    Title = 'Skills',
+    Icon = 'zap',
+})
+local _call398 = _call386:Tab({
+    Title = 'Stats',
+    Icon = 'bar-chart-2',
+})
+local _call400 = _call386:Tab({
+    Title = 'Player',
+    Icon = 'user',
+})
+local _call402 = _call386:Tab({
+    Title = 'Weapon',
+    Icon = 'package',
+})
+local _call404 = _call386:Tab({
+    Title = 'Misc',
+    Icon = 'settings',
+})
+local _call406 = _call386:Tab({
+    Title = 'Settings',
+    Icon = 'settings',
+})
+
+_call390:Section({
+    Title = 'Farming Settings',
+})
+
+local _ = genv.AutoFarm
+
+_call390:Toggle({
+    Title = 'Auto Farm',
+    Callback = function(_412, _412_2, _412_3, _412_4, _412_5)
+        genv.AutoFarm = _412
+
+        local _ = _call13.TouchEnabled
+        local _call415 = Instance.new('Frame')
+
+        _call415.Name = 'NotifyCard'
+        _call415.Size = UDim2.new(0, 80, 0, 0)
+        _call415.BackgroundTransparency = 1
+        _call415.ClipsDescendants = false
+        _call415.LayoutOrder = 1259089403.9055245
+        _call415.Parent = _call35
+
+        local _call419 = Instance.new('CanvasGroup')
+
+        _call419.Name = 'MainBody'
+        _call419.Size = UDim2.new(0, 80, 0, 32)
+        _call419.Position = UDim2.new(0.5, -40, 0, -44)
+        _call419.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        _call419.BackgroundTransparency = 0.35
+        _call419.GroupTransparency = 1
+        _call419.BorderSizePixel = 0
+        _call419.Parent = _call415
+
+        local _call427 = Instance.new('UICorner')
+
+        _call427.CornerRadius = UDim.new(1, 0)
+        _call427.Parent = _call419
+
+        local _call431 = Instance.new('UIStroke')
+
+        _call431.Color = Color3.fromRGB(255, 255, 255)
+        _call431.Transparency = 0.4
+        _call431.Thickness = 2.4
+        _call431.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+        _call431.Parent = _call419
+
+        local _call437 = Instance.new('Frame')
+
+        _call437.Size = UDim2.new(1, 0, 1, 0)
+        _call437.BackgroundTransparency = 1
+        _call437.Parent = _call419
+
+        local _call441 = Instance.new('ImageLabel')
+
+        _call441.Size = UDim2.new(0, 30, 0, 30)
+        _call441.Position = UDim2.new(0, 18, 0.5, -15)
+        _call441.BackgroundTransparency = 1
+        _call441.Image = 'rbxassetid://82500352718600'
+        _call441.ImageTransparency = 1
+        _call441.Parent = _call437
+
+        local _call447 = Instance.new('Frame')
+
+        _call447.Size = UDim2.new(1, -90, 1, 0)
+        _call447.Position = UDim2.new(0, 65, 0, 0)
+        _call447.BackgroundTransparency = 1
+        _call447.Parent = _call437
+
+        local _call453 = Instance.new('TextLabel')
+
+        _call453.Size = UDim2.new(1, 0, 0, 22)
+        _call453.Position = UDim2.new(0, 0, 0.5, -20)
+        _call453.BackgroundTransparency = 1
+        _call453.Font = Enum.Font.GothamBold
+        _call453.TextColor3 = Color3.fromRGB(15, 15, 15)
+        _call453.TextSize = 16
+        _call453.Text = 'Auto Farm'
+        _call453.TextXAlignment = Enum.TextXAlignment.Left
+        _call453.TextTransparency = 1
+        _call453.Parent = _call447
+
+        local _call465 = Instance.new('TextLabel')
+
+        _call465.Size = UDim2.new(1, 0, 0, 18)
+        _call465.Position = UDim2.new(0, 0, 0.5, 2)
+        _call465.BackgroundTransparency = 1
+        _call465.Font = Enum.Font.GothamMedium
+        _call465.TextColor3 = Color3.fromRGB(60, 60, 65)
+        _call465.TextSize = 13
+        _call465.Text = 'Enabled'
+        _call465.TextXAlignment = Enum.TextXAlignment.Left
+        _call465.TextTransparency = 1
+        _call465.Parent = _call447
+
+        error('internal 557: <25ms: infinitelooperror>')
+    end,
+})
+
+local _ = genv.WhiteScreen
+
+_call390:Toggle({
+    Title = 'White Screen',
+    Callback = function(_480, _480_2, _480_3, _480_4, _480_5, _480_6)
+        genv.WhiteScreen = _480
+
+        local _call482 = game:GetService('RunService')
+
+        _call482.Set3dRenderingEnabled(_call482, false)
+
+        local _ = _call13.TouchEnabled
+        local _call487 = Instance.new('Frame')
+
+        _call487.Name = 'NotifyCard'
+        _call487.Size = UDim2.new(0, 80, 0, 0)
+        _call487.BackgroundTransparency = 1
+        _call487.ClipsDescendants = false
+        _call487.LayoutOrder = 1259089417.3653357
+        _call487.Parent = _call35
+
+        local _call491 = Instance.new('CanvasGroup')
+
+        _call491.Name = 'MainBody'
+
+        error('internal 557: <25ms: infinitelooperror>')
+    end,
+})
+
+for _497, _497_2 in pairs(_call7:FindFirstChild('NPCs'):GetChildren())do
+    _497_2:FindFirstChild('Humanoid')
+
+    local _ = _497_2.Name
+
+    table.find({}, _497_2.Name)
+end
+
+local _call504 = _call390:Dropdown({
+    Title = 'Select Monsters',
+    List = {},
+    Value = '',
+    Multi = true,
+    Callback = function(_505, _505_2, _505_3)
+        genv.SelectedMonsters = _505
+
+        local _ = genv.SelectedMonsters
+        local _ = #_505
+        local _ = genv.SelectedMonsters
+        local _ = #_505
+        local _ = _call13.TouchEnabled
+        local _call512 = Instance.new('Frame')
+
+        _call512.Name = 'NotifyCard'
+
+        error('internal 557: <25ms: infinitelooperror>')
+    end,
+})
+
+_call390:Button({
+    Title = 'Refresh Monster List',
+    Callback = function(_516, _516_2, _516_3, _516_4, _516_5)
+        _call504:Clear()
+
+        local _ = _call7.FindFirstChild
+
+        error('internal 557: <25ms: infinitelooperror>')
+    end,
+})
+
+local _ = genv.AutoQuest
+
+_call390:Toggle({
+    Title = 'Auto Accept Quest',
+    Callback = function(_524, _524_2, _524_3, _524_4, _524_5)
+        genv.AutoQuest = _524
+
+        local _ = genv.AutoFarm
+
+        _call275:FireServer('repeatable')
+        task.wait(0.5)
+        task.wait(1)
+
+        local _ = genv.AutoFarm
+        local _ = _LocalPlayer20.Data.Level.Value
+
+        error('line 1: attempt to compare number <= table')
+    end,
+})
+
+local _ = genv.AcceptBoss
+
+_call390:Toggle({
+    Value = true,
+    Title = 'Accept Boss Quests',
+    Callback = function(_535, _535_2, _535_3)
+        genv.AcceptBoss = _535
+
+        local _ = genv.AutoSave
+    end,
+})
+_call390:Toggle({
+    Value = true,
+    Title = 'Freeze Monster',
+    Callback = function(_539, _539_2, _539_3, _539_4, _539_5)
+        genv.freezeEnabled = _539
+
+        local _ = genv.AutoSave
+    end,
+})
+_call390:Toggle({
+    Value = true,
+    Title = 'Big Hitbox',
+    Callback = function(_543, _543_2, _543_3, _543_4, _543_5)
+        genv.hitboxEnabled = _543
+
+        local _ = genv.AutoSave
+    end,
+})
+_call392:Section({
+    Title = 'Dungeon Settings',
+})
+
+local _ = genv.SelectedDungeon
+local _call549 = _call392:Dropdown({
+    Value = '',
+    Callback = function(_550, _550_2, _550_3, _550_4)
+        genv.SelectedDungeon = _550
+
+        local _ = 'Dungeon Selected' .. _550
+
+        error('internal 557: <25ms: infinitelooperror>')
+    end,
+    Title = 'Select Dungeon',
+    List = {
+        [1] = 'CidDungeon',
+        [2] = 'RuneDungeon',
+        [3] = 'DoubleDungeon',
+        [4] = 'BossRush',
+    },
+})
+
+_call392:Button({
+    Title = 'Refresh Dungeon List',
+    Callback = function(_555, _555_2, _555_3)
+        _call549:Clear()
+        _call549:Add('CidDungeon')
+        _call549:Add('RuneDungeon')
+        _call549:Add('DoubleDungeon')
+        _call549:Add('BossRush')
+        error('internal 557: <25ms: infinitelooperror>')
+    end,
+})
+
+local _ = genv.DungeonDifficulty
+
+_call392:Dropdown({
+    Value = 'Easy',
+    Callback = function(_570)
+        genv.DungeonDifficulty = _570
+
+        local _ = genv.AutoSave
+    end,
+    Title = 'Dungeon Difficulty',
+    List = {
+        [1] = 'Easy',
+        [2] = 'Medium',
+        [3] = 'Hard',
+        [4] = 'Extreme',
+    },
+})
+
+local _ = genv.AutoVoteDifficulty
+
+_call392:Toggle({
+    Title = 'Auto Vote Difficulty',
+    Callback = function(_575, _575_2, _575_3)
+        genv.AutoVoteDifficulty = _575
+
+        local _ = genv.AutoSave
+    end,
+})
+
+local _ = genv.AutoDungeon
+
+_call392:Toggle({
+    Title = 'Auto Dungeon',
+    Callback = function(_580, _580_2, _580_3, _580_4)
+        genv.AutoDungeon = _580
+        genv.AutoBoss = false
+        genv.AutoFarm = true
+        genv.AutoQuest = false
+
+        local _ = genv.AutoDungeon
+        local _ = genv.SelectedDungeon
+
+        error('internal 557: <25ms: infinitelooperror>')
+    end,
+})
+
+local _ = genv.AutoReplayDungeon
+
+_call392:Toggle({
+    Title = 'Auto Replay Dungeon',
+    Callback = function(_587, _587_2, _587_3, _587_4) end,
+})
+_call392:Button({
+    Title = 'Vote Difficulty',
+    Callback = function() end,
+})
+_call392:Button({
+    Title = 'Vote Replay',
+    Callback = function() end,
+})
+_call394:Section({
+    Title = 'Normal Boss (No Hop)',
+})
+
+for _601, _601_2 in pairs(_call7:FindFirstChild('NPCs'):GetChildren())do
+    _601_2:FindFirstChild('Humanoid')
+
+    local _605 = string.upper(_601_2.Name)
+
+    string.find(_605, 'BOSS')
+    string.find(_601_2.Name, 'Summon')
+end
+
+_call394:Dropdown({
+    Value = '',
+    Callback = function(_610, _610_2, _610_3, _610_4) end,
+    Title = 'Select Normal Boss',
+    List = {},
+})
+_call394:Button({
+    Title = 'Refresh Normal Boss List',
+    Callback = function(_613, _613_2, _613_3) end,
+})
+
+local _ = genv.AutoFarmSelectedBoss
+
+_call394:Toggle({
+    Title = 'Auto Farm Selected Boss (No Hop)',
+    Callback = function(_617) end,
+})
+_call394:Section({
+    Title = 'Summon Boss (Requires Summon)',
+})
+
+local _ = genv.SelectedBoss
+
+_call394:Dropdown({
+    Value = '',
+    Callback = function(_623, _623_2, _623_3, _623_4, _623_5) end,
+    Title = 'Select Summon Boss',
+    List = {
+        [1] = 'SaberBoss',
+        [2] = 'SaberAlterBoss',
+        [3] = 'QinShiBoss',
+        [4] = 'IchigoBoss',
+        [5] = 'GilgameshBoss',
+        [6] = 'BlessedMaidenBoss',
+        [7] = 'StrongestToday',
+        [8] = 'StrongestHistory',
+        [9] = 'RimuruBoss',
+        [10] = 'AnosBoss',
+        [11] = 'TrueAizenBoss',
+    },
+})
+_call394:Button({
+    Title = 'Refresh Summon Boss List',
+    Callback = function() end,
+})
+
+local _ = genv.BossDifficulty
+
+_call394:Dropdown({
+    Value = 'Normal',
+    Callback = function(_630, _630_2, _630_3, _630_4) end,
+    Title = 'Boss Difficulty',
+    List = {
+        [1] = 'Normal',
+        [2] = 'Medium',
+        [3] = 'Hard',
+        [4] = 'Extreme',
+    },
+})
+
+local _ = genv.AutoSummonBoss
+
+_call394:Toggle({
+    Title = 'Auto Summon Boss',
+    Callback = function(_634, _634_2) end,
+})
+
+local _ = genv.AutoBoss
+
+_call394:Toggle({
+    Title = 'Auto Boss',
+    Callback = function(_638, _638_2, _638_3) end,
+})
+
+local _ = genv.AutoHop
+
+_call394:Toggle({
+    Title = 'Auto Hop',
+    Callback = function(_642) end,
+})
+_call396:Section({
+    Title = 'Auto Skills',
+})
+
+local _ = genv.AutoZ
+
+_call396:Toggle({
+    Title = 'Auto Skill Z',
+    Callback = function(_648) end,
+})
+
+local _ = genv.AutoX
+
+_call396:Toggle({
+    Title = 'Auto Skill X',
+    Callback = function(_652, _652_2, _652_3, _652_4, _652_5) end,
+})
+
+local _ = genv.AutoC
+
+_call396:Toggle({
+    Title = 'Auto Skill C',
+    Callback = function(_656, _656_2) end,
+})
+
+local _ = genv.AutoV
+
+_call396:Toggle({
+    Title = 'Auto Skill V',
+    Callback = function(_660, _660_2, _660_3, _660_4, _660_5) end,
+})
+
+local _ = genv.AutoF
+
+_call396:Toggle({
+    Title = 'Auto Skill F',
+    Callback = function(_664, _664_2) end,
+})
+_call398:Section({
+    Title = 'Stat Allocation',
+})
+
+local _ = genv.SelectedStat
+
+_call398:Dropdown({
+    Title = 'Select Stat',
+    List = {
+        [1] = 'Sword',
+        [2] = 'Power',
+        [3] = 'Defense',
+        [4] = 'Melee',
+    },
+    Value = 'Sword',
+    Multi = false,
+    Callback = function(_670, _670_2, _670_3) end,
+})
+
+local _ = genv.StatPoints
+
+_call398:Slider({
+    Min = 1,
+    Title = 'Points per Upgrade',
+    Max = 100,
+    Callback = function(_674, _674_2) end,
+    Value = 50,
+})
+
+local _ = genv.AutoStat
+
+_call398:Toggle({
+    Title = 'Auto Upgrade Stats',
+    Callback = function(_678, _678_2, _678_3, _678_4) end,
+})
+task.spawn(function(_681, _681_2, _681_3, _681_4) end)
+_call402:Section({
+    Title = 'Weapon Selection',
+})
+
+for _687, _687_2 in pairs(_LocalPlayer20.Character:GetChildren())do
+    _687_2:IsA('Tool')
+
+    local _ = _687_2.Name
+end
+for _694, _694_2 in pairs(_LocalPlayer20.Backpack:GetChildren())do
+    _694_2:IsA('Tool')
+    table.find({[1] = _Name690}, _694_2.Name)
+end
+
+_call402:Dropdown({
+    Value = '',
+    Callback = function(_701, _701_2) end,
+    Title = 'Select Weapon',
+    List = {[1] = _Name690},
+})
+_call402:Button({
+    Title = 'Refresh Weapon List',
+    Callback = function(_704, _704_2, _704_3, _704_4, _704_5) end,
+})
+task.spawn(function(_707) end)
+_call400:Section({
+    Title = 'Teleport Settings',
+})
+_call400:Toggle({
+    Title = 'Use Zigzag Position',
+    Callback = function(_712, _712_2, _712_3, _712_4, _712_5, _712_6) end,
+})
+_call400:Button({
+    Title = 'Randomize Base Position',
+    Callback = function(_715) end,
+})
+_call400:Slider({
+    Min = -15,
+    Title = 'Offset X',
+    Max = 20,
+    Callback = function(_718) end,
+    Value = 0,
+})
+_call400:Slider({
+    Min = -5,
+    Title = 'Offset Y',
+    Max = 20,
+    Callback = function(_721) end,
+    Value = 9,
+})
+_call400:Slider({
+    Min = -15,
+    Title = 'Offset Z',
+    Max = 15,
+    Callback = function(_724, _724_2, _724_3, _724_4, _724_5, _724_6) end,
+    Value = 0,
+})
+_call400:Slider({
+    Min = 50,
+    Title = 'Tween Speed',
+    Max = 500,
+    Callback = function(_727) end,
+    Value = 100,
+})
+_call404:Section({
+    Title = 'Miscellaneous',
+})
+
+local _ = genv.AutoHaki
+
+_call404:Toggle({
+    Title = 'Auto Haki',
+    Callback = function(_733, _733_2, _733_3) end,
+})
+_call404:Button({
+    Title = 'Redeem All Codes',
+    Callback = function(_736, _736_2, _736_3, _736_4) end,
+})
+game:GetService('Lighting')
+
+local _ = _call3.LocalPlayer
+
+_call404:Button({
+    Title = 'Better FPS',
+    Callback = function(_742, _742_2, _742_3) end,
+})
+_call404:Button({
+    Title = 'RTX MODE',
+    Callback = function() end,
+})
+_call406:Section({
+    Title = 'Settings',
+})
+_call406:Button({
+    Title = "I'm Invisible? Click Me!",
+    Callback = function(_750, _750_2) end,
+})
+_call406:Button({
+    Title = 'Anti Afk',
+    Callback = function(_753, _753_2, _753_3) end,
+})
+
+local _ = genv.AutoSave
+
+_call406:Toggle({
+    Title = 'Auto Save Config',
+    Callback = function(_757, _757_2, _757_3) end,
+})
+_call406:Button({
+    Title = 'Save Config',
+    Callback = function(_760, _760_2, _760_3) end,
+})
+_call406:Button({
+    Title = 'Load Config',
+    Callback = function(_763) end,
+})
+task.spawn(function(_766, _766_2) end)
+task.spawn(function(_769, _769_2) end)
+
+local _ = _call13.TouchEnabled
+local _call772 = Instance.new('Frame')
+
+_call772.Name = 'NotifyCard'
+_call772.Size = UDim2.new(0, 80, 0, 0)
+_call772.BackgroundTransparency = 1
+_call772.ClipsDescendants = false
+_call772.LayoutOrder = 1259089534.131852
+_call772.Parent = _call35
+
+local _call776 = Instance.new('CanvasGroup')
+
+_call776.Name = 'MainBody'
+_call776.Size = UDim2.new(0, 80, 0, 32)
+_call776.Position = UDim2.new(0.5, -40, 0, -44)
+_call776.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+_call776.BackgroundTransparency = 0.35
+_call776.GroupTransparency = 1
+_call776.BorderSizePixel = 0
+_call776.Parent = _call772
+
+local _call784 = Instance.new('UICorner')
+
+_call784.CornerRadius = UDim.new(1, 0)
+_call784.Parent = _call776
+
+local _call788 = Instance.new('UIStroke')
+
+_call788.Color = Color3.fromRGB(255, 255, 255)
+_call788.Transparency = 0.4
+_call788.Thickness = 2.4
+_call788.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+_call788.Parent = _call776
+
+local _call794 = Instance.new('Frame')
+
+_call794.Size = UDim2.new(1, 0, 1, 0)
+_call794.BackgroundTransparency = 1
+_call794.Parent = _call776
+
+local _call798 = Instance.new('ImageLabel')
+
+_call798.Size = UDim2.new(0, 30, 0, 30)
+_call798.Position = UDim2.new(0, 18, 0.5, -15)
+_call798.BackgroundTransparency = 1
+_call798.Image = 'rbxassetid://82500352718600'
+_call798.ImageTransparency = 1
+_call798.Parent = _call794
+
+local _call804 = Instance.new('Frame')
+
+_call804.Size = UDim2.new(1, -90, 1, 0)
+_call804.Position = UDim2.new(0, 65, 0, 0)
+_call804.BackgroundTransparency = 1
+_call804.Parent = _call794
+
+local _call810 = Instance.new('TextLabel')
+
+_call810.Size = UDim2.new(1, 0, 0, 22)
+_call810.Position = UDim2.new(0, 0, 0.5, -20)
+_call810.BackgroundTransparency = 1
+_call810.Font = Enum.Font.GothamBold
+_call810.TextColor3 = Color3.fromRGB(15, 15, 15)
+_call810.TextSize = 16
+_call810.Text = 'Trigon'
+_call810.TextXAlignment = Enum.TextXAlignment.Left
+_call810.TextTransparency = 1
+_call810.Parent = _call804
+
+local _call822 = Instance.new('TextLabel')
+
+_call822.Size = UDim2.new(1, 0, 0, 18)
+_call822.Position = UDim2.new(0, 0, 0.5, 2)
+_call822.BackgroundTransparency = 1
+_call822.Font = Enum.Font.GothamMedium
+_call822.TextColor3 = Color3.fromRGB(60, 60, 65)
+_call822.TextSize = 13
+_call822.Text = 'Loaded Successfully'
+_call822.TextXAlignment = Enum.TextXAlignment.Left
+_call822.TextTransparency = 1
+_call822.Parent = _call804
+
+local _call834 = Instance.new('Frame')
+
+_call834.Size = UDim2.new(0, 0, 0, 3)
+_call834.Position = UDim2.new(0, 18, 1, -8)
+_call834.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+_call834.BackgroundTransparency = 0.75
+_call834.BorderSizePixel = 0
+_call834.Parent = _call776
+
+Instance.new('UICorner', _call834)
+
+local _call848 = TweenInfo.new(0.9, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
+local _call852 = _call11:Create(_call772, _call848, {
+    Size = UDim2.new(0, 310, 0, 72),
+})
+
+_call852:Play()
+
+local _call860 = _call11:Create(_call776, _call848, {
+    Size = UDim2.new(1, 0, 1, 0),
+    GroupTransparency = 0,
+    Position = UDim2.new(0, 0, 0, 0),
+})
+
+_call860:Play()
+
+local _call866 = _call11:Create(_call784, _call848, {
+    CornerRadius = UDim.new(0, 24),
+})
+
+_call866:Play()
+task.delay(0.2, function(_871, _871_2, _871_3, _871_4, _871_5) end)
+task.delay(5.8, function() end)
+game:GetService('ReplicatedStorage'):WaitForChild('RemoteEvents'):WaitForChild('SettingsToggle'):FireServer('EnableQuestRepeat', true)
+game:GetService('ReplicatedStorage'):WaitForChild('RemoteEvents'):WaitForChild('SettingsToggle'):FireServer('AutoQuestRepeat', true)
